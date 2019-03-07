@@ -4,7 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        letters=''.join(chr(x) for x in range(ord('a'),ord('z')+1))
+        letters=''.join(chr(x) for x in range(ord('a'),ord('z')+1))  # 'abcdefghijklmnopqrstuvwxyz'
         ans=len(s)
         for l in letters:
             idx=s.find(l)
