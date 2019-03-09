@@ -19,7 +19,7 @@ class Solution(object):
             
             aux(node.left,t,curr,cache)
             aux(node.right,t,curr,cache)
-            cache[curr]-=1  # 减去重复计数
+            cache[curr]-=1  # 移动到不同branch时, curr不再适用, 因此减去1
             
         aux(root,sum,curr,cache)
         return self.ans
