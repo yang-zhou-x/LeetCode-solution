@@ -4,30 +4,12 @@
 #         self.val = x
 #         self.left = None
 #         self.right = None
-
-class Solution:
-    def isValidBST(self, root: TreeNode) -> bool:
-        stack=[]
-        inorder=float('-inf')
-        while stack or root:
-            while root:
-                stack.append(root)
-                root=root.left
-            root=stack.pop()
-            if root.val<=inorder:
-                return False
-            inorder=root.val
-            root=root.right
-        return True
-
-
-# another way, also in-order
 class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
         if not root:
             return True
         nums=[]
-        def in_order(node):
+        def in_order(node):  # inorder顺序输出
             if node:
                 in_order(node.left)
                 nonlocal nums
@@ -38,3 +20,28 @@ class Solution:
             if nums[i]>=nums[i+1]:
                 return False
         return True
+
+# 简化版本，也为inorder思路：
+class Solution(object):
+    def isValidBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        stack=[]
+        small=float('-inf')
+        while stack or root:
+            while root:
+                stack.append(root)
+                root=root.left
+            root=stack.pop()
+            if root.val<=small:
+                return False
+            small=root.val
+            root=root.right
+        return True
+     
+         
+
+
+
