@@ -11,7 +11,7 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        ans=ListNode(0)
+        ans=ListNode(0)  # dummy head
         p=ans
         while l1 and l2:
             if l1.val<l2.val:
