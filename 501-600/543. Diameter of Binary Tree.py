@@ -7,7 +7,7 @@
 
 class Solution(object):
     def __init__(self):
-        self.path=1
+        self.path=1  # 记录节点总数
         
     def diameterOfBinaryTree(self, root):
         """
@@ -22,7 +22,7 @@ class Solution(object):
             self.path=max(self.path,left+right+1)
             return max(left,right)+1
         dfs(root)
-        return self.path-1
+        return self.path-1  # 长度为节点总数-1
             
             
 # Runtime: 32 ms, faster than 100.00% of Python online submissions for Diameter of Binary Tree.
