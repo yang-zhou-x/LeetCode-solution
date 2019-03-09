@@ -4,7 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        start=0
+        start=0  # 子串的起始位置
         ans=0
         cache={}  # 用来记录每个字母最近一次出现的位置
         for i,ss in enumerate(s):
