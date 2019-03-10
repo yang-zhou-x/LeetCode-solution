@@ -1,5 +1,5 @@
 ## LeetCode 题解 
-语言：**Python** / **Python3**  
+语言：**Python3** / **Python**  
 
 题目来自LeetCode英文网站，但题目序号和中文版(力扣)是一致的。
 
