@@ -41,7 +41,5 @@ class Solution(object):
             root=root.right
         return True
      
-         
-
-
-
+# Runtime: 36 ms, faster than 94.74% of Python online submissions for Validate Binary Search Tree.
+# Memory Usage: 16.1 MB, less than 6.88% of Python online submissions for Validate Binary Search Tree.
