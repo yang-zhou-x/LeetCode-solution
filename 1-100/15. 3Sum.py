@@ -31,7 +31,7 @@ class Solution:
         # 计数
         count = collections.Counter(nums)
         ans = []
-        # 对key排序
+        # 对key排序，即对去重后的数字排序
         keys = sorted(count)
         for i,n in enumerate(keys):
             # 计数大于等于2 
