@@ -34,17 +34,17 @@ class Solution:
         # 对key排序，即对去重后的数字排序
         keys = sorted(count)
         for i,n in enumerate(keys):
-            # 计数大于等于2 
+            # 计数大于等于2。即a、b、c中存在重复数字的情形。
             if count[n] >= 2:
                 if n == 0 and count[n] >= 3: # 特殊情况：0
                     ans.append([0,0,0])
                 else:
                     complement = -2*n
                     if complement in count and complement != n: # 排除特殊情况：0
-                        ans.append([n,n] + [complement])
-            # 小于0
+                        ans.append([n,n,complement])
+            # 小于0时。除3个0的情况外，要满足a+b+c=0，必须满足至少其中1个为负数。也是a、b、c中不存在重复数字的情形。
             if n < 0:
-                twosum = -n # 另两数之和
+                twosum = -n # 另两数之和。该两个数不相等。
                 left = bisect.bisect_left(keys, twosum - keys[-1], i+1) # 获取左侧索引
                 right = bisect.bisect_right(keys, twosum // 2, left) # 获取右侧索引
                 for j in keys[left:right]:
