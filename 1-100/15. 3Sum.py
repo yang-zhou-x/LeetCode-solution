@@ -47,7 +47,7 @@ class Solution:
                 twosum = -n # 另两数之和。该两个数不相等。
                 left = bisect.bisect_left(keys, twosum - keys[-1], i+1) # 获取左侧索引
                 right = bisect.bisect_right(keys, twosum // 2, left) # 获取右侧索引
-                for j in keys[left:right]:
+                for j in keys[left:right]: # left:right是两数中较小数的可能位置
                     complement = twosum - j
                     if complement in count and complement != j:
                         ans.append([n,j,complement])
