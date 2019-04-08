@@ -49,7 +49,7 @@ class Solution:
                 right = bisect.bisect_right(keys, twosum // 2, left) # 获取右侧索引
                 for j in keys[left:right]: # left:right是两数中较小数的可能位置
                     complement = twosum - j
-                    if complement in count and complement != j:
+                    if complement in count and complement != j: # 去除有重复数字的情形
                         ans.append([n,j,complement])
         return ans
 # Runtime: 292 ms, faster than 99.62% of Python3 online submissions for 3Sum.
