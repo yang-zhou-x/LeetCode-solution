@@ -53,4 +53,4 @@ class Solution:
                         ans.append([n,j,complement])
         return ans
 # Runtime: 292 ms, faster than 99.62% of Python3 online submissions for 3Sum.
-# Memory Usage: 17.6 MB, less than 8.99% of Python3 online submissions for 3Sum.
+# Memory Usage: 17.5 MB, less than 10.02% of Python3 online submissions for 3Sum.
