@@ -36,12 +36,12 @@ class Solution:
         r_s,r_e=0,len(matrix)-1 # 索引
         c_s,c_e=0,len(matrix[0])-1 # 索引
         ans=[]
-        flag='head'
-        while r_s<=r_e and c_s<=c_e:
-            if flag=='head':
-                ans+=matrix[r_s][c_s:c_e+1]
-                r_s+=1
-                flag='right'
+        flag='head'                           #         head
+        while r_s<=r_e and c_s<=c_e:          #        -------
+            if flag=='head':                  #   left |     |
+                ans+=matrix[r_s][c_s:c_e+1]   #        |     | right
+                r_s+=1                        #        ------|
+                flag='right'                  #         tail
             elif flag=='right':
                 ans+=[matrix[r][c_e] for r in range(r_s,r_e+1)]
                 c_e-=1
