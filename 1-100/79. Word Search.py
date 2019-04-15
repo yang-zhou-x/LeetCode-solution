@@ -22,3 +22,7 @@ class Solution:
         return res
 # Runtime: 296 ms, faster than 39.95% of Python3 online submissions for Word Search.
 # Memory Usage: 14.4 MB, less than 20.41% of Python3 online submissions for Word Search.
+
+# 改进方法
+# 1）先计数，从字符数量上判断是否存在可能
+# 2）去掉list的slice操作
