@@ -24,7 +24,7 @@ class Solution:
         dp=[0]*(len(s)+1)
         dp[0]=1
         # 公式为：
-        # dp[i]=dp[i-1] if s[i] != '0'
+        # dp[i]=dp[i-1] if s[i-1] != '0'
         #        + dp[i-2] if '09'<s[i-2:i]<'27'
         for i in range(1,len(s)+1):
             if s[i-1]!='0':
