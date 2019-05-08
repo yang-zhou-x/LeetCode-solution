@@ -15,13 +15,15 @@ Explanation: The longest valid parentheses substring is "()()"
 
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
-        dp, stack = [0]*(len(s) + 1), []
+        dp = [0]*(len(s) + 1)
+        stack = []
         for i in range(len(s)):
             if s[i] == '(':
                 stack.append(i)
             else:
                 if stack:
-                    p = stack.pop()
+                    p = stack.pop()  # '('的索引进入stack
+                    # 当前位置的值 = '('前紧邻的合格字串长度 + 当前合格的字串长度
                     dp[i + 1] = dp[p] + i - p + 1
         return max(dp)
         
