@@ -29,7 +29,7 @@ class Solution:
                     continue
                 dp_left = dp[i][j - 1] if j - 1 >= 0 else float('inf')  # 左侧
                 dp_up = dp[i - 1][j] if i - 1 >= 0 else float('inf')  # 上侧
-                dp[i][j] = min(dp_left, dp_up) + grid[i][j]
+                dp[i][j] = min(dp_left, dp_up) + grid[i][j]  # 左侧和上侧中的较小值 + 当前位置的值
         return dp[-1][-1]
 
 # Runtime: 48 ms, faster than 99.13% of Python3 online submissions for Minimum Path Sum.
