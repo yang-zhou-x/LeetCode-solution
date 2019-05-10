@@ -33,9 +33,9 @@ class Solution:
         if m == 0 or n == 0:
             return 0
         dp = [1] * n
-        for i in range(1, m):
-            for j in range(1, n):
-                dp[j] = dp[j - 1] + dp[j]
+        for i in range(1, m):  # 每1行
+            for j in range(1, n):  # 依次向右
+                dp[j] = dp[j - 1] + dp[j]  # = 到达左侧格子的路径数 + 到达上侧格子的路径数
         return dp[-1]
 # Runtime: 36 ms, faster than 87.68% of Python3 online submissions for Unique Paths.
 # Memory Usage: 13.2 MB, less than 5.25% of Python3 online submissions for Unique Paths.
