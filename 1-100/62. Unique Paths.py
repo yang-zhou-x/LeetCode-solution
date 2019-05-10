@@ -32,7 +32,7 @@ class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         if m == 0 or n == 0:
             return 0
-        dp = [1] * n
+        dp = [1] * n  # 实际上是m行n列的格子，这里重复使用了
         for i in range(1, m):  # 每1行
             for j in range(1, n):  # 依次向右
                 dp[j] = dp[j - 1] + dp[j]  # = 到达左侧格子的路径数 + 到达上侧格子的路径数
