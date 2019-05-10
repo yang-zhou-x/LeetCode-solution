@@ -46,21 +46,22 @@ Output: false
 
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        cache={}
-        def dp(i,j):
-            if (i,j) not in cache:
-                if j==len(p):
-                    ans= i==len(s)
+        cache = {}
+
+        def dp(i, j):
+            if (i, j) not in cache:
+                if j == len(p):
+                    ans = i == len(s)
                 else:
-                    first_match= i<len(s) and p[j] in {s[i],'.'}
-                    if j<len(p)-1 and p[j+1]=='*':
-                        ans=dp(i,j+2) or first_match and dp(i+1,j)
+                    first_match = i < len(s) and p[j] in {s[i], '.'}
+                    if j < len(p) - 1 and p[j + 1] == '*':
+                        ans = dp(i, j + 2) or first_match and dp(i + 1, j)
                     else:
-                        ans=first_match and dp(i+1,j+1)
-                cache[i,j]=ans
-            return cache[i,j]
+                        ans = first_match and dp(i + 1, j + 1)
+                cache[i, j] = ans
+            return cache[i, j]
         
-        return dp(0,0)
+        return dp(0, 0)
      
 # Runtime: 64 ms, faster than 69.23% of Python3 online submissions for Regular Expression Matching.
 # Memory Usage: 13.5 MB, less than 5.32% of Python3 online submissions for Regular Expression Matching.
