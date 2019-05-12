@@ -24,13 +24,13 @@ Output: false
 
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-        dp=[False]*len(s) # 用于记录结果
+        dp = [False]*len(s)  # 用于记录结果
         for idx in range(len(s)):
-        # idx作为结束位置，比较此之前的字符串
+            # idx作为结束位置，比较此之前的字符串
             for word in wordDict:
                 # 当该段字符串与某一个word匹配，并且word是第1个匹配字段或者此前相邻的一段字符串匹配时
-                if word==s[idx-len(word)+1:idx+1] and (idx-len(word)==-1 or dp[idx-len(word)]):
-                    dp[idx]=True
+                if word == s[idx-len(word)+1:idx+1] and (idx-len(word) == -1 or dp[idx-len(word)]):
+                    dp[idx] = True
                     break
         return dp[-1]
         
