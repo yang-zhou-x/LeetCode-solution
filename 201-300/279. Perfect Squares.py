@@ -12,9 +12,9 @@ Output: 2
 Explanation: 13 = 4 + 9.
 '''
 
+# BFS算法
 class Solution:
     def numSquares(self, n: int) -> int:
-        # BFS算法
         # n=0,1时：
         if n<2:
             return n
@@ -40,7 +40,7 @@ class Solution:
 # Runtime: 240 ms, faster than 76.47% of Python3 online submissions for Perfect Squares.
 # Memory Usage: 13.9 MB, less than 19.01% of Python3 online submissions for Perfect Squares.
 
-
+# 动态规划
 class Solution:
     _dp = [0]
 
@@ -49,5 +49,5 @@ class Solution:
         while len(dp) <= n:
             dp += min(dp[-i * i] for i in range(1, int(len(dp)**0.5 + 1))) + 1,
         return dp[n]
-# Runtime: 112 ms, faster than 91.13% of Python3 online submissions for Perfect Squares.
-# Memory Usage: 13.3 MB, less than 36.50% of Python3 online submissions for Perfect Squares.
+# Runtime: 96 ms, faster than 94.50% of Python3 online submissions for Perfect Squares.
+# Memory Usage: 13.3 MB, less than 64.60% of Python3 online submissions for Perfect Squares.
