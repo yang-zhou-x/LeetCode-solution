@@ -26,6 +26,5 @@ class Solution:
                     # 当前位置的值 = '('前紧邻的合格字串长度 + 当前合格的字串长度
                     dp[i + 1] = dp[p] + i - p + 1
         return max(dp)
-        
-# Runtime: 48 ms, faster than 99.57% of Python3 online submissions for Longest Valid Parentheses.
-# Memory Usage: 13.8 MB, less than 5.26% of Python3 online submissions for Longest Valid Parentheses.
+# Runtime: 44 ms, faster than 99.39% of Python3 online submissions for Longest Valid Parentheses.
+# Memory Usage: 13.7 MB, less than 42.67% of Python3 online submissions for Longest Valid Parentheses.
