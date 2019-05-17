@@ -47,7 +47,8 @@ class Solution:
     def numSquares(self, n: int) -> int:
         dp = self._dp
         while len(dp) <= n:
-            dp += min(dp[-i * i] for i in range(1, int(len(dp)**0.5 + 1))) + 1,
+            dp += [min(dp[-i * i]
+                       for i in range(1, int(len(dp)**0.5 + 1))) + 1]
         return dp[n]
 # Runtime: 96 ms, faster than 94.50% of Python3 online submissions for Perfect Squares.
 # Memory Usage: 13.3 MB, less than 64.60% of Python3 online submissions for Perfect Squares.
