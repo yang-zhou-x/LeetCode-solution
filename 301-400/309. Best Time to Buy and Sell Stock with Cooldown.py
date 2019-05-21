@@ -21,8 +21,8 @@ class Solution:
         # dp[i][1] 持有股票时
         dp[1][1] = -prices[0]
         for i in range(1, len(prices)):
-            dp[i+1][0] = max(dp[i][0], dp[i][1]+prices[i])  # 延续不持有，或是已卖出
-            dp[i+1][1] = max(dp[i][1], dp[i-1][0]-prices[i])  # 延续持有，或是已买入。买时cooldown一天。
+            dp[i+1][0] = max(dp[i][0], dp[i][1]+prices[i])  # 延续不持有，或是刚卖出
+            dp[i+1][1] = max(dp[i][1], dp[i-1][0]-prices[i])  # 延续持有，或是刚买入。买时cooldown一天。
         return max(dp[-1])
 # Runtime: 40 ms, faster than 92.04% of Python3 online submissions for Best Time to Buy and Sell Stock with Cooldown.
 # Memory Usage: 13.6 MB, less than 8.20% of Python3 online submissions for Best Time to Buy and Sell Stock with Cooldown.
