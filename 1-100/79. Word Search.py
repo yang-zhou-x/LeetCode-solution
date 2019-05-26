@@ -1,3 +1,22 @@
+'''
+Given a 2D board and a word, find if the word exists in the grid.
+The word can be constructed from letters of sequentially adjacent cell, 
+where "adjacent" cells are those horizontally or vertically neighboring. 
+The same letter cell may not be used more than once.
+
+Example:
+board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+Given word = "ABCCED", return true.
+Given word = "SEE", return true.
+Given word = "ABCB", return false.
+'''
+
+# 解法1
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         if not board:
@@ -23,7 +42,7 @@ class Solution:
 # Runtime: 296 ms, faster than 39.95% of Python3 online submissions for Word Search.
 # Memory Usage: 14.4 MB, less than 20.41% of Python3 online submissions for Word Search.
 
-# 改进方法
+# 解法2：改进方法
 # 1）先计数，从字符数量上判断是否存在可能
 # 2）去掉list的slice操作，改用索引
 class Solution:
@@ -36,14 +55,13 @@ class Solution:
         for c, cnt in collections.Counter(word).items():
             if c not in count or cnt > count[c]:
                 return False
-        
-        def dfs(i, x, y): # 从board[x][y]开始，寻找周围是否有word[i]
-            if i >= len(word): # 终止
+
+        def dfs(i, x, y):  # 从board[x][y]开始，寻找周围是否有word[i]
+            if i >= len(word):  # 终止
                 return True
-            
             c = board[x][y]
-            board[x][y] = '' # 不能重复使用，先用空字符占位
-            
+            board[x][y] = ''  # 不能重复使用，先用空字符占位
+            # 向上、下、左、右4个方向寻找
             if x > 0 and board[x - 1][y] == word[i] and dfs(i + 1, x - 1, y):
                 return True
             if x + 1 < m and board[x + 1][y] == word[i] and dfs(i + 1, x + 1, y):
@@ -52,11 +70,10 @@ class Solution:
                 return True
             if y + 1 < n and board[x][y + 1] == word[i] and dfs(i + 1, x, y + 1):
                 return True
-            
-            board[x][y] = c
+            board[x][y] = c  # 复原
             return False
-        
         m, n = len(board), len(board[0])
-        return any(dfs(1, x, y) for x in range(m) for y in range(n) if board[x][y] == word[0])  # 只要存在1个True，返回True
-# Runtime: 56 ms, faster than 99.90% of Python3 online submissions for Word Search.
-# Memory Usage: 14.3 MB, less than 21.41% of Python3 online submissions for Word Search.
+        # 从每个等于word[0]的位置开始。只要存在1个True，返回True
+        return any(dfs(1, x, y) for x in range(m) for y in range(n) if board[x][y] == word[0])
+# Runtime: 48 ms, faster than 100.00% of Python3 online submissions for Word Search.
+# Memory Usage: 14.3 MB, less than 59.77% of Python3 online submissions for Word Search.
