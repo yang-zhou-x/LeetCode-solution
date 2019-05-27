@@ -14,14 +14,13 @@ Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        maximum = big = small = nums[0]
+        if not nums:
+            return 0
+        maxi = big = small = nums[0]
         for n in nums[1:]:
-            tmp1 = max(n, n * big, n * small)
-            tmp2 = min(n, n * big, n * small)
-            big = tmp1
-            small = tmp2   # small记录乘积为负数的情况
-            maximum = max(maximum, big)
-        return maximum
-        
-# Runtime: 48 ms, faster than 72.39% of Python3 online submissions for Maximum Product Subarray.
-# Memory Usage: 13.5 MB, less than 19.89% of Python3 online submissions for Maximum Product Subarray.
+            big, small = max(n, big * n, small * n), min(n, big * n, small * n)
+            # small记录乘积为负数的情况
+            maxi = max(maxi, big)
+        return maxi
+# Runtime: 40 ms, faster than 97.66% of Python3 online submissions for Maximum Product Subarray.
+# Memory Usage: 13.2 MB, less than 87.35% of Python3 online submissions for Maximum Product Subarray.
