@@ -61,5 +61,5 @@ class Solution:
                 if p - buy > profit:
                     profit = p - buy
         return profit
-# Runtime: 32 ms, faster than 99.97% of Python3 online submissions for Best Time to Buy and Sell Stock.
-# Memory Usage: 14 MB, less than 5.08% of Python3 online submissions for Best Time to Buy and Sell Stock.
+# Runtime: 32 ms, faster than 99.64% of Python3 online submissions for Best Time to Buy and Sell Stock.
+# Memory Usage: 14.1 MB, less than 23.68% of Python3 online submissions for Best Time to Buy and Sell Stock.
