@@ -12,29 +12,20 @@ nums2 = [2,5,6],       n = 3
 Output: [1,2,2,3,5,6]
 '''
 
-class Solution(object):
-    def merge(self, nums1, m, nums2, n):
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
-        :type nums1: List[int]
-        :type m: int
-        :type nums2: List[int]
-        :type n: int
-        :rtype: void Do not return anything, modify nums1 in-place instead.
+        Do not return anything, modify nums1 in-place instead.
         """
-        right1 = m-1  # 末尾位置，从后向前。
-        right2 = n-1
-        right = m+n-1
-        while right1 >= 0 and right2 >= 0:
-            if nums1[right1] > nums2[right2]:
-                nums1[right] = nums1[right1]
-                right1 -= 1
+        # 从后向前。
+        while m>0 and n> 0:
+            if nums1[m-1] > nums2[n-1]:
+                nums1[m+n-1] = nums1[m-1]
+                m -= 1
             else:
-                nums1[right] = nums2[right2]
-                right2 -= 1
-            right -= 1
-        while right2 >= 0:
-            nums1[right] = nums2[right2]
-            right2 -= 1
-            right -= 1
-# Runtime: 36 ms, faster than 99.02% of Python3 online submissions for Merge Sorted Array.
-# Memory Usage: 12.6 MB, less than 29.52% of Python3 online submissions for Merge Sorted Array.
+                nums1[m+n-1] = nums2[n-1]
+                n -= 1
+        if n> 0:
+            nums1[:n] = nums2[:n]
+# Runtime: 40 ms, faster than 85.45% of Python3 online submissions for Merge Sorted Array.
+# Memory Usage: 13.2 MB, less than 34.10% of Python3 online submissions for Merge Sorted Array.
