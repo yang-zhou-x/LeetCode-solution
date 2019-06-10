@@ -35,7 +35,7 @@ class Solution(object):
         try:
             slow = head
             fast = head.next
-            while slow != fast:  # while slow is not fast:
+            while slow is not fast:
                 slow = slow.next  # 类似追及问题
                 fast = fast.next.next
             return True
