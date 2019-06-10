@@ -34,9 +34,9 @@ class Solution(object):
         """
         try:
             slow = head
-            fast = head.next
+            fast = head.next  # 类似追及问题
             while slow is not fast:
-                slow = slow.next  # 类似追及问题
+                slow = slow.next  # 任意Node出现没有next的情况，跳至except部分
                 fast = fast.next.next
             return True
         except:
