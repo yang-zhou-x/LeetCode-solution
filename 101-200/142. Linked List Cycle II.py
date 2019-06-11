@@ -49,7 +49,7 @@ class Solution(object):
                 break
         if is_cycle:
             p = head
-            while p is not fast:  # 可以画图理解。a | b-a | a 三段
+            while p is not fast:  # # 画图理解：a | b-a | a 三段
                 p = p.next  # 其中位置a处为循环点
                 fast = fast.next
             return p
