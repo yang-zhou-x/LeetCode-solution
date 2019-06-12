@@ -45,7 +45,7 @@ class Solution(object):
             size2 += 1
             p2 = p2.next
         if size1 > size2:
-            for _ in range(size1-size2):
+            for _ in range(size1-size2):  # 使剩余长度相等
                 headA = headA.next
         if size2 > size1:
             for _ in range(size2-size1):
