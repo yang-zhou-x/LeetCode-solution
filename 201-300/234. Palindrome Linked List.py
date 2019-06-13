@@ -49,7 +49,7 @@ class Solution(object):
 # Runtime: 72 ms, faster than 94.06% of Python online submissions for Palindrome Linked List.
 # Memory Usage: 30 MB, less than 66.49% of Python online submissions for Palindrome Linked List.
 
-# 解法2，思路一致
+# 另一种写法，思路一致
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
         size, p = 0, head
