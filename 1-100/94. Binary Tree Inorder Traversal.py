@@ -1,3 +1,10 @@
+'''
+Given a binary tree, return the inorder traversal of its nodes' values.
+
+Follow up: 
+Recursive solution is trivial, could you do it iteratively?
+'''
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -6,20 +13,15 @@
 #         self.right = None
 
 class Solution:
-    def inorderTraversal(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
-        res=[]
-        self._aux(root,res)
-        
-        return res
-        
-    def _aux(self,root,res):
-        if root:
-            self._aux(root.left,res)
-            res.append(root.val)
-            self._aux(root.right,res)
-            
-# Runtime: 32 ms, faster than 99.77% of Python3 online submissions for Binary Tree Inorder Traversal.
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        nums = []
+
+        def dfs(root):
+            if root:
+                dfs(root.left)
+                nums.append(root.val)
+                dfs(root.right)
+        dfs(root)
+        return nums
+# Runtime: 32 ms, faster than 94.21% of Python3 online submissions for Binary Tree Inorder Traversal.
+# Memory Usage: 13.2 MB, less than 28.91% of Python3 online submissions for Binary Tree Inorder Traversal.
