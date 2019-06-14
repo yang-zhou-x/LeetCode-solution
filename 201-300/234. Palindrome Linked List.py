@@ -49,7 +49,7 @@ class Solution(object):
 # Runtime: 72 ms, faster than 94.06% of Python online submissions for Palindrome Linked List.
 # Memory Usage: 30 MB, less than 66.49% of Python online submissions for Palindrome Linked List.
 
-# 另一种写法，思路一致
+# 解法2
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
         size, p = 0, head
@@ -64,18 +64,12 @@ class Solution:
             p.next = prev
             prev = p
             p = tmp
-        if size % 2 == 0:
-            while prev and p:
-                if prev.val != p.val:
-                    return False
-                prev, p = prev.next, p.next
-            return True
-        else:
+        if size % 2 != 0:
             p = p.next
-            while prev and p:
-                if prev.val != p.val:
-                    return False
-                prev, p = prev.next, p.next
-            return True
+        while prev and p:
+            if prev.val != p.val:
+                return False
+            prev, p = prev.next, p.next
+        return True
 # Runtime: 68 ms, faster than 98.81% of Python3 online submissions for Palindrome Linked List.
 # Memory Usage: 23.7 MB, less than 71.83% of Python3 online submissions for Palindrome Linked List.
