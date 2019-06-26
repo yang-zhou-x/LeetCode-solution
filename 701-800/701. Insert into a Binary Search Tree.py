@@ -56,7 +56,7 @@ class Solution:
 # Runtime: 124 ms, faster than 69.08% of Python3 online submissions for Insert into a Binary Search Tree.
 # Memory Usage: 15.1 MB, less than 5.32% of Python3 online submissions for Insert into a Binary Search Tree.
 
-# python3
+# 相同解法。
 class Solution:
     def insertIntoBST(self, root: TreeNode, val: int) -> TreeNode:
         if root is None:
