@@ -12,6 +12,7 @@ Input:
 Output: 1->1->2->3->4->4->5->6
 '''
 
+# 解法1，O(N*log(k))
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         def merge2lists(list1, list2):
@@ -40,3 +41,20 @@ class Solution:
         return lists[0] if amount > 0 else lists
 # Runtime: 184 ms, faster than 21.71% of Python3 online submissions for Merge k Sorted Lists.
 # Memory Usage: 26.8 MB, less than 5.03% of Python3 online submissions for Merge k Sorted Lists.
+
+# 解法2，O(N*log(N))
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        nums = []
+        for l in lists:
+            while l:
+                nums.append(l.val)
+                l = l.next
+        dummy = ListNode(0)
+        p = dummy
+        for n in sorted(nums):
+            p.next = ListNode(n)
+            p = p.next
+        return dummy.next
+# Runtime: 72 ms, faster than 89.23% of Python3 online submissions for Merge k Sorted Lists.
+# Memory Usage: 17.4 MB, less than 15.49% of Python3 online submissions for Merge k Sorted Lists.
