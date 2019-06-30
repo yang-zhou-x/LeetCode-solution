@@ -42,3 +42,5 @@ class Solution:
                                        edit[i][j - 1],  # word2删除1字符
                                        edit[i - 1][j - 1])  # 替换1字符
         return edit[m][n]
+# Runtime: 172 ms, faster than 78.66% of Python3 online submissions for Edit Distance.
+# Memory Usage: 16.6 MB, less than 80.11% of Python3 online submissions for Edit Distance.
