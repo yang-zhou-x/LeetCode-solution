@@ -20,4 +20,5 @@ Explanation: nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
 
 class Solution:
     def maxCoins(self, nums: List[int]) -> int:
+        nums = [1] + [x for x in nums if x] + [1]
         
