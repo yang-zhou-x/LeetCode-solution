@@ -20,5 +20,15 @@ Explanation: nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
 
 class Solution:
     def maxCoins(self, nums: List[int]) -> int:
-        nums = [1] + [x for x in nums if x] + [1]
-        
+        nums = [1] + [x for x in nums if x] + [1]  # 数字为0的气球最先爆炸
+        n = len(nums)
+        dp = [[0] * n for _ in range(n)]
+        for k in range(2, n):
+            for left in range(n - k):
+                right = left + k
+                for i in range(left + 1, right):
+                    dp[left][right] = max(dp[left][right],
+                                          nums[left]*nums[i]*nums[right] + dp[left][i] + dp[i][right])  # 从最后向前推
+        return dp[0][-1]
+# Runtime: 400 ms, faster than 84.27% of Python3 online submissions for Burst Balloons.
+# Memory Usage: 13.5 MB, less than 81.48% of Python3 online submissions for Burst Balloons.
