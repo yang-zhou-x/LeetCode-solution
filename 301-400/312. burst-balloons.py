@@ -28,7 +28,7 @@ class Solution:
                 right = left + k
                 for i in range(left + 1, right):
                     dp[left][right] = max(dp[left][right],
-                                          nums[left]*nums[i]*nums[right] + dp[left][i] + dp[i][right])  # 从最后向前推
+                                          nums[left]*nums[i]*nums[right] + dp[left][i] + dp[i][right])  # 从最后一个气球向前
         return dp[0][-1]
 # Runtime: 400 ms, faster than 84.27% of Python3 online submissions for Burst Balloons.
 # Memory Usage: 13.5 MB, less than 81.48% of Python3 online submissions for Burst Balloons.
