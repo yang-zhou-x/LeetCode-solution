@@ -39,3 +39,29 @@ class Solution:
         return gen(1, n)
 # Runtime: 68 ms, faster than 37.88% of Python3 online submissions for Unique Binary Search Trees II.
 # Memory Usage: 15 MB, less than 48.45% of Python3 online submissions for Unique Binary Search Trees II.
+
+# 使用缓存
+class Solution:
+    def generateTrees(self, n: int) -> List[TreeNode]:
+        if n < 1:
+            return []
+        cache = {}
+
+        def generate(first, last):
+            if first > last:
+                return [None]
+            if (first, last) in cache:
+                return cache[first, last]
+            trees = []
+            for root in range(first, last+1):
+                for left in generate(first, root - 1):
+                    for right in generate(root + 1, last):
+                        node = TreeNode(root)
+                        node.left = left
+                        node.right = right
+                        trees += node,
+            cache[first, last] = trees
+            return trees
+        return generate(1, n)
+# Runtime: 48 ms, faster than 99.69% of Python3 online submissions for Unique Binary Search Trees II.
+# Memory Usage: 13.9 MB, less than 97.23% of Python3 online submissions for Unique Binary Search Trees II.
