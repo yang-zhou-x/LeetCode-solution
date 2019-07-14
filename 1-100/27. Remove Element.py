@@ -29,3 +29,15 @@ for (int i = 0; i < len; i++) {
 }
 '''
 
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        left, right = 0, len(nums) - 1
+        while left <= right:
+            if nums[left] == val:
+                nums[left] = nums[right]
+                right -= 1
+            else:
+                left += 1
+        return right + 1
+# Runtime: 36 ms, faster than 76.47% of Python3 online submissions for Remove Element.
+# Memory Usage: 13.1 MB, less than 63.10% of Python3 online submissions for Remove Element.
