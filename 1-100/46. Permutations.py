@@ -24,7 +24,6 @@ class Solution:
             return [[n]+aux for i,n in enumerate(nums) for aux in self.permute(nums[:i]+nums[i+1:])]
         else:
             return [nums]  # [[]], because 'for aux in'.
-            
 # Runtime: 44 ms, faster than 99.86% of Python3 online submissions for Permutations.
 
 # 20190719
