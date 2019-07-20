@@ -47,7 +47,7 @@ class Solution:
         curr = head
         while curr:
             if curr.next and curr.val == curr.next.val:
-                rm_val = curr.val
+                rm_val = curr.val  # 记录重复的值
                 while curr and curr.val == rm_val:
                     curr = curr.next
                 prev.next = curr
