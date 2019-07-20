@@ -43,3 +43,22 @@ class Solution:
         return res
 # Runtime: 48 ms, faster than 99.89% of Python3 online submissions for Combination Sum.
 # Memory Usage: 13.9 MB, less than 5.05% of Python3 online submissions for Combination Sum.
+
+# 加入索引的版本
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int):
+        res = []
+        candidates.sort()
+
+        def dfs(remain, path, idx):
+            if remain == 0:
+                res.append(path)
+                return
+            for i in range(idx, len(candidates)):
+                if candidates[i] > remain:
+                    break
+                dfs(remain - candidates[i], path + [candidates[i]], i)
+        dfs(target, [], 0)
+        return res
+# Runtime: 56 ms, faster than 96.94% of Python3 online submissions for Combination Sum.
+# Memory Usage: 14.1 MB, less than 5.05% of Python3 online submissions for Combination Sum.
