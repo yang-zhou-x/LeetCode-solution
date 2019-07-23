@@ -32,21 +32,18 @@ class Solution:
 
 # 20190723
 class Solution:
-    def generateParenthesis(self, n):
-        """
-        :type n: int
-        :rtype: List[str]
-        """
+    def generateParenthesis(self, n: int) -> List[str]:
         ans = []
 
         def helper(path, left, right):
             if len(path) == n * 2:
                 ans.append(path)
+                return
             if left < n:
                 helper(path + '(', left + 1, right)
             if right < left:
                 helper(path + ')', left, right + 1)
         helper('', 0, 0)
         return ans
-# Runtime: 40 ms, faster than 79.33% of Python3 online submissions for Generate Parentheses.
-# Memory Usage: 14.1 MB, less than 5.01% of Python3 online submissions for Generate Parentheses.
+# Runtime: 36 ms, faster than 93.63% of Python3 online submissions for Generate Parentheses.
+# Memory Usage: 14.2 MB, less than 5.01% of Python3 online submissions for Generate Parentheses.
