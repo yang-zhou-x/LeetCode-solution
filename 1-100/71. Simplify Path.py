@@ -37,3 +37,16 @@ Input: "/a//b////c/d//././/.."
 Output: "/a/b/c"
 '''
 
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        places = [p for p in path.split("/") if p != "." and p != ""]
+        stack = []
+        for p in places:
+            if p == "..":
+                if len(stack) > 0:
+                    stack.pop()  # 遇'..'返回上级目录
+            else:
+                stack.append(p)  # 依次放入
+        return '/' + '/'.join(stack)
+# Runtime: 40 ms, faster than 62.20% of Python3 online submissions for Simplify Path.
+# Memory Usage: 13.8 MB, less than 5.40% of Python3 online submissions for Simplify Path.
