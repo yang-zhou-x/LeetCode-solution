@@ -29,3 +29,48 @@ Explanation:
 = 17 + 5
 = 22
 '''
+
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack = []
+        for t in tokens:
+            if t not in '+-*/':
+                stack.append(int(t))
+            else:
+                operand2 = stack.pop()
+                operand1 = stack.pop()
+                if t == '+':
+                    tmp = operand1 + operand2
+                elif t == '-':
+                    tmp = operand1 - operand2
+                elif t == '*':
+                    tmp = operand1 * operand2
+                else:
+                    tmp = int(operand1 / operand2)
+                stack.append(tmp)
+        return stack[0]
+# Runtime: 76 ms, faster than 83.95% of Python3 online submissions for Evaluate Reverse Polish Notation.
+# Memory Usage: 14.1 MB, less than 5.10% of Python3 online submissions for Evaluate Reverse Polish Notation.
+
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack = []
+        operator = {'+', '-', '*', '/'}
+        for t in tokens:
+            if t not in operator:
+                stack.append(int(t))
+            else:
+                operand2 = stack.pop()
+                operand1 = stack.pop()
+                if t == '+':
+                    tmp = operand1 + operand2
+                elif t == '-':
+                    tmp = operand1 - operand2
+                elif t == '*':
+                    tmp = operand1 * operand2
+                else:
+                    tmp = int(operand1 / operand2)
+                stack.append(tmp)
+        return stack[0]
+# Runtime: 76 ms, faster than 83.95% of Python3 online submissions for Evaluate Reverse Polish Notation.
+# Memory Usage: 13.9 MB, less than 5.10% of Python3 online submissions for Evaluate Reverse Polish Notation.
