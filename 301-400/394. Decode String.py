@@ -15,17 +15,17 @@ s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
 
 class Solution:
     def decodeString(self, s: str) -> str:
-        stack = []
+        stack = []        
         for ch in s:
             if ch == ']':
-                tmp = ''  # 待重复的字符串
+                tmp = ''  # substring needing to be repeated
                 while stack[-1] != '[':
                     tmp = stack.pop() + tmp
                 stack.pop()
-                n = ''  # 重复的次数
+                n = ''  # number of repetitions of the substring
                 while stack and stack[-1].isdigit():
                     n = stack.pop() + n
-                stack.append(tmp * int(n))
+                stack.append(tmp * int(n))  # put it in stack
             else:
                 stack.append(ch)
         return ''.join(stack)
