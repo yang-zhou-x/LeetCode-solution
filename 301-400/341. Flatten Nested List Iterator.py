@@ -1,3 +1,20 @@
+'''
+Given a nested list of integers, implement an iterator to flatten it.
+Each element is either an integer, or a list -- whose elements may also be integers or other lists.
+
+Example 1:
+Input: [[1,1],2,[1,1]]
+Output: [1,1,2,1,1]
+Explanation: By calling next repeatedly until hasNext returns false, 
+             the order of elements returned by next should be: [1,1,2,1,1].
+
+Example 2:
+Input: [1,[4,[6]]]
+Output: [1,4,6]
+Explanation: By calling next repeatedly until hasNext returns false, 
+             the order of elements returned by next should be: [1,4,6].
+'''
+
 # """
 # This is the interface that allows for creating nested lists.
 # You should not implement it, or speculate about its implementation
@@ -23,6 +40,11 @@
 #        :rtype List[NestedInteger]
 #        """
 
+
+# Your NestedIterator object will be instantiated and called as such:
+# i, v = NestedIterator(nestedList), []
+# while i.hasNext(): v.append(i.next())341. Flatten Nested List Iterator
+
 class NestedIterator(object):
 
     def __init__(self, nestedList):
@@ -30,7 +52,7 @@ class NestedIterator(object):
         Initialize your data structure here.
         :type nestedList: List[NestedInteger]
         """
-        self.stack=nestedList[::-1]
+        self.stack = nestedList[::-1]
         
 
     def next(self):
@@ -44,13 +66,10 @@ class NestedIterator(object):
         :rtype: bool
         """
         while self.stack:
-            top=self.stack[-1]
+            top = self.stack[-1]
             if top.isInteger():
                 return True
-            self.stack=self.stack[:-1]+top.getList()[::-1]
-        
+            self.stack = self.stack[:-1] + top.getList()[::-1]
         return False
-
-# Your NestedIterator object will be instantiated and called as such:
-# i, v = NestedIterator(nestedList), []
-# while i.hasNext(): v.append(i.next())341. Flatten Nested List Iterator
+# Runtime: 72 ms, faster than 53.80% of Python online submissions for Flatten Nested List Iterator.
+# Memory Usage: 17.1 MB, less than 98.34% of Python online submissions for Flatten Nested List Iterator.
