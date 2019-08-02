@@ -55,3 +55,28 @@ class Solution:
         return False
 # Runtime: 84 ms, faster than 25.53% of Python3 online submissions for Scramble String.
 # Memory Usage: 13.6 MB, less than 6.12% of Python3 online submissions for Scramble String.
+
+# use cache
+from collections import Counter
+
+class Solution:
+    def __init__(self):
+        self.cache = {}
+        
+    def isScramble(self, s1: str, s2: str) -> bool:
+        if (s1, s2) in self.cache:
+            return self.cache[s1, s2]
+        if Counter(s1) != Counter(s2):
+            self.cache[s1,s2] = False
+            return False
+        if s1 == s2:
+            self.cache[s1,s2] = True
+            return True
+        for i in range(1, len(s1)):
+            if self.isScramble(s1[:i], s2[:i]) and self.isScramble(s1[i:], s2[i:]) or \
+                self.isScramble(s1[i:], s2[:-i]) and self.isScramble(s1[:i], s2[-i:]):
+                return True
+        self.cache[s1,s2] = False
+        return False
+# Runtime: 72 ms, faster than 32.98% of Python3 online submissions for Scramble String.
+# Memory Usage: 13.8 MB, less than 6.12% of Python3 online submissions for Scramble String.
