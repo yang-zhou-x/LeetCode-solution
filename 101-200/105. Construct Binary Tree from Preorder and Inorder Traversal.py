@@ -35,6 +35,25 @@ class Solution:
 # Runtime: 140 ms, faster than 75.10% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
 # Memory Usage: 52.4 MB, less than 47.37% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
 
+
+# 传递索引，避免列表slice操作
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        mapping = {n: i for i, n in enumerate(inorder)}
+
+        def help(left, right):
+            if left > right:
+                return None
+            root = TreeNode(preorder.pop(0))
+            idx = mapping[root.val]
+            root.left = help(left, idx - 1)
+            root.right = help(idx + 1, right)
+            return root
+        return help(0, len(inorder) - 1)
+# Runtime: 68 ms, faster than 82.11% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+# Memory Usage: 18.6 MB, less than 67.32% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+
+
 # 迭代方法，更快
 class Solution:
     def buildTree(self, preorder: 'List[int]', inorder: 'List[int]') -> 'TreeNode':
