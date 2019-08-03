@@ -26,6 +26,7 @@ class Solution:
 # Runtime: 128 ms, faster than 60.69% of Python3 online submissions for Construct Binary Tree from Inorder and Postorder Traversal.
 # Memory Usage: 52.2 MB, less than 65.28% of Python3 online submissions for Construct Binary Tree from Inorder and Postorder Traversal.
 
+# 传递索引，没有列表slice操作
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
         mapping = {}
@@ -41,5 +42,5 @@ class Solution:
             root.left = helper(left, idx - 1)
             return root
         return helper(0, len(inorder) - 1)
-# Runtime: 60 ms, faster than 76.56% of Python3 online submissions for Construct Binary Tree from Inorder and Postorder Traversal.
-# Memory Usage: 18.1 MB, less than 76.53% of Python3 online submissions for Construct Binary Tree from Inorder and Postorder Traversal.
+# Runtime: 64 ms, faster than 91.89% of Python3 online submissions for Construct Binary Tree from Inorder and Postorder Traversal.
+# Memory Usage: 18.7 MB, less than 67.71% of Python3 online submissions for Construct Binary Tree from Inorder and Postorder Traversal.
