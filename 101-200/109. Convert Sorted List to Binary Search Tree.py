@@ -33,3 +33,28 @@ class Solution:
         return helper(0, len(nums) - 1)
 # Runtime: 128 ms, faster than 82.60% of Python3 online submissions for Convert Sorted List to Binary Search Tree.
 # Memory Usage: 20.4 MB, less than 5.07% of Python3 online submissions for Convert Sorted List to Binary Search Tree.
+
+
+# 不转换为数组，空间复杂度由O(n)将为O(log(n))
+class Solution:
+    def sortedListToBST(self, head: ListNode) -> TreeNode:
+        self.p = head
+        p = head
+        cnt = 0
+        while p:
+            p = p.next
+            cnt += 1
+
+        def build(left, right):
+            if left > right:
+                return None
+            mid = (left + right) >> 1
+            l_child = build(left, mid - 1)
+            root = TreeNode(self.p.val)
+            root.left = l_child
+            self.p = self.p.next
+            root.right = build(mid + 1, right)
+            return root
+        return build(0, cnt - 1)
+# Runtime: 124 ms, faster than 96.99% of Python3 online submissions for Convert Sorted List to Binary Search Tree.
+# Memory Usage: 20.3 MB, less than 5.21% of Python3 online submissions for Convert Sorted List to Binary Search Tree.
