@@ -38,3 +38,20 @@ class Solution:
                 level = [node for lr in lrPair for node in lr if node]
         return ans
 # Runtime: 40 ms, faster than 96.15% of Python3 online submissions for Binary Tree Level Order Traversal.
+
+
+# 2019/08/12更新
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if root is None:
+            return []
+        level = [root]
+        ans = []
+        while level:
+            vals = [node.val for node in level]
+            ans.append(vals)
+            pairs = [(node.left, node.right) for node in level]
+            level = [node for pair in pairs for node in pair if node]
+        return ans
+# Runtime: 40 ms, faster than 80.01% of Python3 online submissions for Binary Tree Level Order Traversal.
+# Memory Usage: 14 MB, less than 16.13% of Python3 online submissions for Binary Tree Level Order Traversal.
