@@ -52,3 +52,17 @@ class Solution:
         return dp[n]
 # Runtime: 96 ms, faster than 94.50% of Python3 online submissions for Perfect Squares.
 # Memory Usage: 13.3 MB, less than 64.60% of Python3 online submissions for Perfect Squares.
+
+
+# 
+class Solution:
+    def numSquares(self, n: int) -> int:
+        dp = [0] * (n + 1)
+        left = 1
+        while left <= n:
+            dp[left] = 1 + min(dp[left - i * i] for i in
+                               range(1, int(left**0.5) + 1))
+            left += 1
+        return dp[-1]
+# Runtime: 2404 ms, faster than 7.90% of Python3 online submissions for Perfect Squares.
+# Memory Usage: 14 MB, less than 60.00% of Python3 online submissions for Perfect Squares.
