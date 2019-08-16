@@ -15,3 +15,34 @@ NOTE:
 input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.
 '''
 
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]):
+        if not intervals:
+            return [newInterval]
+        ans = []
+        left = 0
+        while left < len(intervals):
+            if newInterval[0] <= intervals[left][1]:
+                break
+            left += 1
+        ans += intervals[:left]
+        # 注意边界
+        if left == len(intervals) or newInterval[1] < intervals[left][0]:
+            ans.append(newInterval)
+            ans += intervals[left:]
+            return ans
+
+        new_s = newInterval[0] if newInterval[0] < intervals[left][0] \
+            else intervals[left][0]
+        while left < len(intervals) and newInterval[1] >= intervals[left][1]:
+            left += 1
+        # 注意边界
+        if left == len(intervals) or newInterval[1] < intervals[left][0]:
+            ans.append([new_s, newInterval[1]])
+            ans += intervals[left:]
+        else:
+            ans.append([new_s, intervals[left][1]])
+            ans += intervals[left+1:]
+        return ans
+# Runtime: 96 ms, faster than 53.90% of Python3 online submissions for Insert Interval.
+# Memory Usage: 17.3 MB, less than 8.00% of Python3 online submissions for Insert Interval.
