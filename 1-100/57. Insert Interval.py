@@ -44,5 +44,5 @@ class Solution:
             ans.append([new_s, intervals[left][1]])
             ans += intervals[left+1:]
         return ans
-# Runtime: 96 ms, faster than 53.90% of Python3 online submissions for Insert Interval.
-# Memory Usage: 17.3 MB, less than 8.00% of Python3 online submissions for Insert Interval.
+# Runtime: 84 ms, faster than 97.87% of Python3 online submissions for Insert Interval.
+# Memory Usage: 17.2 MB, less than 8.00% of Python3 online submissions for Insert Interval.
