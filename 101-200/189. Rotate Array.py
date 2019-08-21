@@ -31,3 +31,14 @@ class Solution:
         nums[:] = nums[-k:]+nums[:-k]  # 必须加[:]
 # Runtime: 40 ms, faster than 99.96% of Python3 online submissions for Rotate Array.
 # Memory Usage: 13.4 MB, less than 74.85% of Python3 online submissions for Rotate Array.
+
+# 20190821
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        k = k % len(nums)
+        nums[:] = nums[-k:]+nums[:-k]
+# Runtime: 64 ms, faster than 98.18% of Python3 online submissions for Rotate Array.
+# Memory Usage: 15.3 MB, less than 5.09% of Python3 online submissions for Rotate Array.
