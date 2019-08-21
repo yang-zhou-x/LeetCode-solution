@@ -21,14 +21,14 @@ Your solution should be in logarithmic complexity.
 
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
-        l, r = 0, len(nums)-1
-        while l < r:
-            m = (l+r) >> 1
+        left, right = 0, len(nums)-1
+        while left < right:
+            mid = (left + right) >> 1
             # 因为只需要返回1个peak，所以可以使用二分法查找。也可以顺序查找。
-            if nums[m] > nums[m+1]:
-                r = m  # 包含右侧点
+            if nums[mid] > nums[mid+1]:
+                right = mid  # 包含右侧点，当前mid处可能为peak
             else:
-                l = m+1
-        return l
+                left = mid + 1
+        return left
 # Runtime: 28 ms, faster than 99.30% of Python3 online submissions for Find Peak Element.
 # Memory Usage: 13.2 MB, less than 62.72% of Python3 online submissions for Find Peak Element.
