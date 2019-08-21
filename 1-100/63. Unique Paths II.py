@@ -50,3 +50,25 @@ class Solution:
         return dp[-1][-1]
 # Runtime: 28 ms, faster than 99.64% of Python3 online submissions for Unique Paths II.
 # Memory Usage: 13.3 MB, less than 26.37% of Python3 online submissions for Unique Paths II.
+
+# 整理一下上面的代码
+class Solution:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        if not obstacleGrid or not obstacleGrid[0] or obstacleGrid[0][0] == 1:
+            return 0
+        m = len(obstacleGrid)
+        n = len(obstacleGrid[0])
+        dp = [[0] * n for _ in range(m)]
+        for i in range(n):
+            if obstacleGrid[0][i] == 1:
+                break
+            dp[0][i] = 1
+        for i in range(m):
+            if obstacleGrid[i][0] == 1:
+                break
+            dp[i][0] = 1
+        for i in range(1, m):
+            for j in range(1, n):
+                if obstacleGrid[i][j] != 1:
+                    dp[i][j] = dp[i-1][j] + dp[i][j-1]
+        return dp[-1][-1]
