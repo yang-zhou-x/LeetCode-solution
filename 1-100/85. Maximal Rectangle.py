@@ -40,28 +40,29 @@ class Solution:
     def maximalRectangle(self, matrix: List[List[str]]) -> int:
         if not matrix or not matrix[0]:
             return 0
+        m = len(matrix)
         n = len(matrix[0])
-        left = [0] * n
-        height = [0] * n
-        right = [n] * n
+        left = [0] * n  # left[i]是i处对应的左起点
+        height = [0] * n  # height[i]是i处对应的高度
+        right = [n] * n  # right[i]是i处对应的右端点
         ans = 0
-        for i in range(len(matrix)):
+        for i in range(m):  # 对每一行
             curr_left, curr_right = 0, n
-            for j in range(n - 1, -1, -1):
+            for j in range(n - 1, -1, -1):  # 从右向左
                 if matrix[i][j] == '1':
                     right[j] = min(right[j], curr_right)
                 else:
-                    right[j] = n
-                    curr_right = j
+                    right[j] = n  # 为了不减小下一层的范围
+                    curr_right = j  # 右边界（不包含）
             for j in range(n):
                 if matrix[i][j] == '1':
                     left[j] = max(left[j], curr_left)
-                    height[j] = height[j] + 1
+                    height[j] = height[j] + 1  # 上一层的高度 + 1
                 else:
                     height[j] = 0
-                    left[j] = 0
-                    curr_left = j + 1
+                    left[j] = 0  # 为了不减小下一层的范围
+                    curr_left = j + 1  # 左边界（包含）
                 ans = max(ans, height[j] * (right[j] - left[j]))
         return ans
-# Runtime: 100 ms, faster than 66.80% of Python3 online submissions for Maximal Rectangle.
-# Memory Usage: 13.9 MB, less than 83.25% of Python3 online submissions for Maximal Rectangle.
+# Runtime: 220 ms, faster than 71.05% of Python3 online submissions for Maximal Rectangle.
+# Memory Usage: 14.8 MB, less than 6.25% of Python3 online submissions for Maximal Rectangle.
