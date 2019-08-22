@@ -36,7 +36,6 @@ class Solution:
 # Memory Usage: 13.8 MB, less than 86.80% of Python3 online submissions for Maximal Rectangle.
 
 # 解法2
-
 class Solution:
     def maximalRectangle(self, matrix: List[List[str]]) -> int:
         if not matrix or not matrix[0]:
