@@ -41,17 +41,17 @@ class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
         mapping = {n: i for i, n in enumerate(inorder)}
 
-        def help(left, right):
+        def build(left, right):
             if left > right:
                 return None
             root = TreeNode(preorder.pop(0))
             idx = mapping[root.val]
-            root.left = help(left, idx - 1)
-            root.right = help(idx + 1, right)
+            root.left = build(left, idx - 1)
+            root.right = build(idx + 1, right)
             return root
-        return help(0, len(inorder) - 1)
-# Runtime: 68 ms, faster than 82.11% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
-# Memory Usage: 18.6 MB, less than 67.32% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+        return build(0, len(inorder) - 1)
+# Runtime: 68 ms, faster than 82.49% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+# Memory Usage: 18.6 MB, less than 71.05% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
 
 
 # 迭代方法，更快
