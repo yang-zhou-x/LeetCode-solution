@@ -36,3 +36,21 @@ class Solution:
         return dp[-1][-1]
 # Runtime: 48 ms, faster than 99.13% of Python3 online submissions for Minimum Path Sum.
 # Memory Usage: 14.9 MB, less than 7.98% of Python3 online submissions for Minimum Path Sum.
+
+# 20190822 update
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        if not grid or not grid[0]:
+            return 
+        dp = [[0] * len(grid[0]) for _ in range(len(grid))]
+        dp[0][0] = grid[0][0]
+        for i in range(1, len(grid[0])):  # first row
+            dp[0][i] = dp[0][i-1] + grid[0][i]
+        for i in range(1, len(grid)):  # first column
+            dp[i][0] = dp[i-1][0] + grid[i][0]
+        for i in range(1, len(grid)):  # others
+            for j in range(1, len(grid[0])):
+                dp[i][j] = min(dp[i][j-1], dp[i-1][j]) + grid[i][j]
+        return dp[-1][-1]
+# Runtime: 112 ms, faster than 74.00% of Python3 online submissions for Minimum Path Sum.
+# Memory Usage: 15.4 MB, less than 21.05% of Python3 online submissions for Minimum Path Sum.
