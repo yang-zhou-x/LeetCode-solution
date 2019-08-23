@@ -29,3 +29,16 @@ class Solution:
         return res[0]
 # Runtime: 40 ms, faster than 88.68% of Python3 online submissions for Triangle.
 # Memory Usage: 13.5 MB, less than 85.65% of Python3 online submissions for Triangle.
+
+# the same
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        if not triangle or not triangle[0]:
+            return 0
+        dp = triangle[-1]
+        for i in range(len(triangle) - 1, 0, -1):
+            for j in range(i):
+                dp[j] = triangle[i-1][j] + min(dp[j], dp[j+1])
+        return dp[0]
+# Runtime: 68 ms, faster than 78.61% of Python3 online submissions for Triangle.
+# Memory Usage: 14.5 MB, less than 6.67% of Python3 online submissions for Triangle.
