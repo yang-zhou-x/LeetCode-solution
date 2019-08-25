@@ -40,5 +40,5 @@ class Solution:
                 stack.append(root.right)
                 stack.append(root.left)
         return ans
-# Runtime: 32 ms, faster than 92.62% of Python3 online submissions for Binary Tree Preorder Traversal.
-# Memory Usage: 13.9 MB, less than 5.24% of Python3 online submissions for Binary Tree Preorder Traversal.
+# Runtime: 28 ms, faster than 99.25% of Python3 online submissions for Binary Tree Preorder Traversal.
+# Memory Usage: 13.9 MB, less than 6.52% of Python3 online submissions for Binary Tree Preorder Traversal.
