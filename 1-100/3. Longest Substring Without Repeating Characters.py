@@ -35,6 +35,6 @@ class Solution:
                 pos[ss] = i  # 更新ss的位置
             else:
                 pos[ss] = i  # 添加位置
-        return max(ans, i - start + 1)
+        return max(ans, i - start + 1)  # 和结束循环时的子串进行比较
 # Runtime: 52 ms, faster than 97.99% of Python3 online submissions for Longest Substring Without Repeating Characters.
 # Memory Usage: 13.9 MB, less than 5.03% of Python3 online submissions for Longest Substring Without Repeating Characters.
