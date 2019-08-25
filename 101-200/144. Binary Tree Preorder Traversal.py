@@ -31,14 +31,14 @@ class Solution:
 # iteration
 class Solution:
     def preorderTraversal(self, root: TreeNode) -> List[int]:
-        ans =[]
+        ans = []
         stack = [root]
         while stack:
-            root = stack.pop()
-            if root:
-                ans.append(root.val)
-                stack.append(root.right)
-                stack.append(root.left)
+            node = stack.pop()
+            if node:
+                ans.append(node.val)
+                stack.append(node.right)
+                stack.append(node.left)
         return ans
 # Runtime: 28 ms, faster than 99.25% of Python3 online submissions for Binary Tree Preorder Traversal.
 # Memory Usage: 13.9 MB, less than 6.52% of Python3 online submissions for Binary Tree Preorder Traversal.
