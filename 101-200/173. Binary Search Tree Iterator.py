@@ -79,7 +79,7 @@ class BSTIterator:
         """
         @return the next smallest number
         """
-        node = self.stack.pop()
+        node = self.stack.pop()  # 当前最小的
         self.dfs(node.right)
         return node.val
         
