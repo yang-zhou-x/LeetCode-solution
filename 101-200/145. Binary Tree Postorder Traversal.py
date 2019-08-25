@@ -36,6 +36,7 @@ class Solution:
         while stack:
             node = stack.pop()
             if node:
+                # left-right-root ==> root-right-left
                 # pre-order, but right first
                 ans.append(node.val)
                 stack.append(node.left)
