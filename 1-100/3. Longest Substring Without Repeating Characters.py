@@ -18,7 +18,7 @@ Explanation: The answer is "wke", with the length of 3.
              Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 '''
 
-# 2019/07/22
+# 2019/07/22更新
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         if len(s) < 2:
@@ -27,8 +27,8 @@ class Solution:
         start = 0
         ans = 0
         for i, ss in enumerate(s):
-            # pos中是所有字母的位置。字串中可能不包含所有字母。
-            # start <= pos[ss] 确保该重复字母出现在当前字串中
+            # pos中是所有字母的位置。子串中可能不包含所有字母
+            # start <= pos[ss] 确保该重复字母是在当前子串中
             if ss in pos and start <= pos[ss]:
                 ans = max(ans, i - start)
                 start = pos[ss] + 1  # 更新起始位置
