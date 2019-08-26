@@ -22,7 +22,7 @@ Output: The root of a Greater Tree like this:
 #         self.left = None
 #         self.right = None
 
-# python2
+# python
 class Solution(object):
     def __init__(self):
         self.curr=0
