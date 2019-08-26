@@ -15,23 +15,25 @@ class Solution:
         if len(s1) + len(s2) != len(s3):
             return False
         dp = [[True] * (len(s2) + 1) for _ in range(len(s1) + 1)]
-        for j in range(1, len(s2) + 1):  # 第1行。全部取自s2
-            if s2[j-1] == s3[j-1] and dp[0][j-1]:
+        for j in range(1, len(s2) + 1):  # 第1行。s3前段全部取自s2
+            if dp[0][j - 1] and s2[j - 1] == s3[j - 1]:
                 dp[0][j] = True
             else:
                 dp[0][j] = False
-        for i in range(1, len(s1) + 1):  # 第1列。全部取自s1
-            if s3[i-1] == s1[i-1] and dp[i-1][0]:
+
+        for i in range(1, len(s1) + 1):  # 第1列。s3前段全部取自s1
+            if dp[i - 1][0] and s1[i - 1] == s3[i - 1]:
                 dp[i][0] = True
             else:
                 dp[i][0] = False
+
         for i in range(1, len(s1) + 1):  # 余下的格子
             for j in range(1, len(s2) + 1):
-                if s3[i-1+j] == s1[i-1] and dp[i-1][j] or\
-                        s3[i-1+j] == s2[j-1] and dp[i][j-1]:
+                if dp[i - 1][j] and s1[i - 1] == s3[i + j - 1] or\
+                        dp[i][j - 1] and s2[j - 1] == s3[i + j - 1]:
                     dp[i][j] = True
                 else:
                     dp[i][j] = False
         return dp[-1][-1]
-# Runtime: 52 ms, faster than 38.26% of Python3 online submissions for Interleaving String.
-# Memory Usage: 14 MB, less than 5.36% of Python3 online submissions for Interleaving String.
+# Runtime: 32 ms, faster than 98.08% of Python3 online submissions for Interleaving String.
+# Memory Usage: 14 MB, less than 16.67% of Python3 online submissions for Interleaving String.
