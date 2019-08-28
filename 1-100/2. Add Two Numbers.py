@@ -19,18 +19,18 @@ Explanation: 342 + 465 = 807.
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         dummy = ListNode(0)
-        flag = 0  # 记录进位
+        curr = 0  # 记录进位
         p = dummy
-        while l1 or l2 or flag:
+        while l1 or l2 or curr:
             if l1:
-                flag += l1.val
+                curr += l1.val
                 l1 = l1.next
             if l2:
-                flag += l2.val
+                curr += l2.val
                 l2 = l2.next
-            p.next = ListNode(flag % 10)
+            p.next = ListNode(curr % 10)
             p = p.next
-            flag //= 10
+            curr //= 10
         return dummy.next
 # Runtime: 72 ms, faster than 96.04% of Python3 online submissions for Add Two Numbers.
 # Memory Usage: 13 MB, less than 96.64% of Python3 online submissions for Add Two Numbers.
