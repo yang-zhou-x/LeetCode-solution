@@ -25,13 +25,13 @@ class Solution:
         if not nums:
             return 0
         cache = {nums[0]: 1, -nums[0]: 1} if nums[0] != 0 else {0: 2}
-        for i in range(1, len(nums)):
+        for idx in range(1, len(nums)):
             tmp = {}
-            for c in cache:
-                # 总数 = tmp中已有的个数+新增的个数
-                tmp[c+nums[i]] = tmp.get(c+nums[i], 0)+cache.get(c)
-                tmp[c-nums[i]] = tmp.get(c-nums[i], 0)+cache.get(c)
+            for key in cache:
+                # 总数 = 新增的个数 + tmp中已有的个数
+                tmp[key + nums[idx]] = cache[key] + tmp.get(key + nums[idx], 0)
+                tmp[key - nums[idx]] = cache[key] + tmp.get(key - nums[idx], 0)
             cache = tmp
         return cache.get(S, 0)
-# Runtime: 328 ms, faster than 55.32% of Python3 online submissions for Target Sum.
-# Memory Usage: 13.2 MB, less than 78.38% of Python3 online submissions for Target Sum.
+# Runtime: 288 ms, faster than 55.69% of Python3 online submissions for Target Sum.
+# Memory Usage: 14 MB, less than 58.33% of Python3 online submissions for Target Sum.
