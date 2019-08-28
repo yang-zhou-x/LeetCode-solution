@@ -27,7 +27,7 @@ class Solution:
         cache = {nums[0]: 1, -nums[0]: 1} if nums[0] != 0 else {0: 2}
         for idx in range(1, len(nums)):
             tmp = {}
-            for key in cache:
+            for key in cache:  # idx之前的结果
                 # 总数 = 新增的个数 + tmp中已有的个数
                 tmp[key + nums[idx]] = cache[key] + tmp.get(key + nums[idx], 0)
                 tmp[key - nums[idx]] = cache[key] + tmp.get(key - nums[idx], 0)
