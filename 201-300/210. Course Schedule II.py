@@ -38,7 +38,7 @@ class Solution:
         # A pair [a, b] in the input represents edge from b --> a
         for dest, src in prerequisites:
             adj_list[src].append(dest)
-        topological_sorted_order = []
+        ans = []
         is_possible = True
         # By default all vertces are WHITE
         color = {k: Solution.WHITE for k in range(numCourses)}
@@ -54,18 +54,19 @@ class Solution:
             if node in adj_list:
                 for neighbor in adj_list[node]:
                     if color[neighbor] == Solution.WHITE:
-                        dfs(neighbor)
+                        dfs(neighbor)  # 递归
                     elif color[neighbor] == Solution.GRAY:
-                         # An edge to a GRAY vertex represents a cycle
+                        # An edge to a GRAY vertex represents a cycle
                         is_possible = False
             # Recursion ends. We mark it as black
-            color[node] = Solution.BLACK
-            topological_sorted_order.append(node)
+            color[node] = Solution.BLACK  # dfs过程中，当前node后面的节点先加入了ans
+            ans.append(node)  # 所以最后的结果需要反转,即ans[::-1]
 
         for vertex in range(numCourses):
             # If the node is unprocessed, then call dfs on it.
             if color[vertex] == Solution.WHITE:
                 dfs(vertex)
-        return topological_sorted_order[::-1] if is_possible else []
-# Runtime: 120 ms, faster than 52.46% of Python3 online submissions for Course Schedule II.
-# Memory Usage: 17.7 MB, less than 7.14% of Python3 online submissions for Course Schedule II.
+
+        return ans[::-1] if is_possible else[]
+# Runtime: 120 ms, faster than 53.62% of Python3 online submissions for Course Schedule II.
+# Memory Usage: 17.5 MB, less than 7.14% of Python3 online submissions for Course Schedule II.
