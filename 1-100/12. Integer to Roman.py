@@ -56,5 +56,5 @@ class Solution:
                 num -= n
             if num == 0:
                 return ans
-# Runtime: 52 ms, faster than 84.76% of Python3 online submissions for Integer to Roman.
-# Memory Usage: 14.1 MB, less than 5.21% of Python3 online submissions for Integer to Roman.
+# Runtime: 44 ms, faster than 98.20% of Python3 online submissions for Integer to Roman.
+# Memory Usage: 13.9 MB, less than 6.15% of Python3 online submissions for Integer to Roman.
