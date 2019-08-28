@@ -45,33 +45,16 @@ Output: 1994
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 '''
 
-class Solution(object):
-    def romanToInt(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        d = {'M':1000, 'D':500, 'C':100, 'L':50, 'X':10, 'V':5, 'I':1}
-        ans=0
-        prev=1000
-        for ss in s:
-            ans+=d[ss]
-            if prev<d[ss]:
-                ans-=prev*2
-            prev=d[ss]
-        return ans
-
-# 2019/7/23 更新    
 class Solution:
     def romanToInt(self, s: str) -> int:
-        d = {'M':1000, 'D':500, 'C':100, 'L':50, 'X':10, 'V':5, 'I':1}
+        d = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
         prev = 1000
         ans = 0
-        for ss in s:
-            ans += d[ss]
-            if d[ss] > prev:  # 前一个字母代表的数值小于当前字母时
-                ans -= 2 * prev  # 有一个prev值是上一步加上的
-            prev = d[ss]
+        for cha in s:
+            ans += d[cha]
+            if d[cha] > prev:  # 当前字母代表的数值大于前一个字母时
+                ans -= prev * 2  # IV = I + V - I * 2
+            prev = d[cha]
         return ans
 # Runtime: 44 ms, faster than 99.67% of Python3 online submissions for Roman to Integer.
 # Memory Usage: 14.1 MB, less than 5.31% of Python3 online submissions for Roman to Integer.
