@@ -33,8 +33,8 @@ class Solution:
         for p in prices:
             one_buy = min(one_buy, p)
             one_profit = max(one_profit, p - one_buy)
-            two_buy = min(two_buy, p - one_profit)
+            two_buy = min(two_buy, p - one_profit)  # 将第1次的利润合并入第2次
             two_profit = max(two_profit, p - two_buy)
         return two_profit
-# Runtime: 84 ms, faster than 83.63% of Python3 online submissions for Best Time to Buy and Sell Stock III.
+# Runtime: 84 ms, faster than 84.22% of Python3 online submissions for Best Time to Buy and Sell Stock III.
 # Memory Usage: 14.8 MB, less than 63.64% of Python3 online submissions for Best Time to Buy and Sell Stock III.
