@@ -21,5 +21,5 @@ class Solution:
             return self.addBinary(a[:-1], b[:-1]) + '0'
         else:
             return self.addBinary(a[:-1], b[:-1]) + '1'
-# Runtime: 52 ms, faster than 8.46% of Python3 online submissions for Add Binary.
-# Memory Usage: 14.1 MB, less than 5.09% of Python3 online submissions for Add Binary.
+# Runtime: 44 ms, faster than 44.62% of Python3 online submissions for Add Binary.
+# Memory Usage: 13.6 MB, less than 5.41% of Python3 online submissions for Add Binary.
