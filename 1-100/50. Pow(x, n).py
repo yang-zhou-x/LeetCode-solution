@@ -42,10 +42,10 @@ class Solution:
         if n == 0:
             return 1
         elif n < 0:
-            return 1/self.myPow(x, -n)
-        elif n % 2:
-            return x*self.myPow(x, n-1)
-        else:
-            return self.myPow(x*x, n/2)
-# Runtime: 36 ms, faster than 69.73% of Python3 online submissions for Pow(x, n).
-# Memory Usage: 13.3 MB, less than 41.09% of Python3 online submissions for Pow(x, n).
+            return 1 / self.myPow(x, -n)
+        elif n % 2:  # n为奇数
+            return x * self.myPow(x, n - 1)
+        else:  # n为偶数
+            return self.myPow(x * x, n / 2)
+# Runtime: 32 ms, faster than 92.02% of Python3 online submissions for Pow(x, n).
+# Memory Usage: 13.9 MB, less than 6.90% of Python3 online submissions for Pow(x, n).
