@@ -29,9 +29,7 @@ class Solution:
 # 传递索引，没有列表slice操作
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
-        mapping = {}
-        for i, n in enumerate(inorder):
-            mapping[n] = i
+        mapping = {n: i for i, n in enumerate(inorder)}  # 减少从inorder序列中查找索引
 
         def helper(left, right):
             if left > right:
