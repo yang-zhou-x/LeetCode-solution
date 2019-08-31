@@ -26,33 +26,14 @@ class Solution:
         dividend, divisor = abs(dividend), abs(divisor)
         res = 0
         while dividend >= divisor:
-            temp, i = divisor, 1
-            while dividend >= temp:
-                dividend -= temp
+            tmp, i = divisor, 1
+            while dividend >= tmp:
+                dividend -= tmp
                 res += i
                 i <<= 1
-                temp <<= 1
+                tmp <<= 1
         if not positive:
             res = -res
         return min(max(-2147483648, res), 2147483647)
 # Runtime: 36 ms, faster than 87.27% of Python3 online submissions for Divide Two Integers.
 # Memory Usage: 13.6 MB, less than 7.41% of Python3 online submissions for Divide Two Integers.
-
-# the same as
-class Solution:
-    def divide(self, dividend: int, divisor: int) -> int:
-        positive = (dividend < 0) == (divisor < 0)
-        dividend, divisor = abs(dividend), abs(divisor)
-        res = 0
-        while dividend >= divisor:
-            temp, i = divisor, 1
-            while dividend >= temp:
-                dividend -= temp
-                res += i
-                i = i + i
-                temp = temp + temp
-        if not positive:
-            res = -res
-        return min(max(-2147483648, res), 2147483647)
-# Runtime: 36 ms, faster than 87.27% of Python3 online submissions for Divide Two Integers.
-# Memory Usage: 14.1 MB, less than 7.41% of Python3 online submissions for Divide Two Integers.
