@@ -26,7 +26,6 @@ class Solution:
         operand = 0
         res = 0
         sign = 1  # 1 means positive, -1 means negative
-
         for ch in s:
             if ch.isdigit():
                 operand = operand * 10 + int(ch)
@@ -42,8 +41,7 @@ class Solution:
                 # Push the result and sign on to the stack, for later
                 stack.append(res)
                 stack.append(sign)
-                # Reset operand and result
-                sign = 1
+                sign = 1  # Reset operand and result
                 res = 0
             elif ch == ')':
                 res += sign * operand
@@ -51,5 +49,6 @@ class Solution:
                 res += stack.pop()  # operand
                 operand = 0
         return res + sign * operand
-# Runtime: 120 ms, faster than 56.44% of Python3 online submissions for Basic Calculator.
-# Memory Usage: 15.6 MB, less than 19.05% of Python3 online submissions for Basic Calculator.
+# Runtime: 88 ms, faster than 81.66% of Python3 online submissions for Basic Calculator.
+# Memory Usage: 15.3 MB, less than 7.14% of Python3 online submissions for Basic Calculator.
+
