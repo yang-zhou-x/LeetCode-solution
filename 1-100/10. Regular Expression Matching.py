@@ -49,6 +49,7 @@ class Solution:
     def isMatch(self, s: str, p: str) -> bool:
         cache = {}
 
+        # dp(i, j): does text[i:] and pattern[j:] match?
         def dp(i, j):
             if (i, j) not in cache:
                 if j == len(p):
