@@ -12,7 +12,7 @@ Input:
 Output: 1->1->2->3->4->4->5->6
 '''
 
-# 解法1，O(N*log(k))
+# 解法1，O(N*log(k))，两两合并
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         def merge2lists(list1, list2):
@@ -42,7 +42,7 @@ class Solution:
 # Runtime: 184 ms, faster than 21.71% of Python3 online submissions for Merge k Sorted Lists.
 # Memory Usage: 26.8 MB, less than 5.03% of Python3 online submissions for Merge k Sorted Lists.
 
-# 解法2，O(N*log(N))
+# 解法2，O(N*log(N))，取出全部数字直接排序，再生成链表
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         nums = []
