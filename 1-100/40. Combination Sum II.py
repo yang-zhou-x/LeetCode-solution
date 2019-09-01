@@ -26,43 +26,25 @@ A solution set is:
 ]
 '''
 
-# 先求出所有组合，再去重
 class Solution:
-    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        res = []
-        candidates.sort()
-        def dfs(remain, path, idx):
-                if remain == 0:
-                    res.append(path)
-                    return
-                for i in range(idx, len(candidates)):
-                    if candidates[i] > remain:
-                        break
-                    dfs(remain - candidates[i], path + [candidates[i]], i + 1)
-        dfs(target, [], 0)
+    def combinationSum2(self, candidates: List[int], target: int):
         ans = []
-        for r in res:
-            if r not in ans:
-                ans.append(r)
-        return ans
-# Runtime: 68 ms, faster than 60.39% of Python3 online submissions for Combination Sum II.
-# Memory Usage: 14 MB, less than 5.11% of Python3 online submissions for Combination Sum II.
-
-class Solution:
-    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        res = []
         candidates.sort()
-        def dfs(remain, path, idx):
-                if remain == 0:
-                    res.append(path)
-                    return
+
+        def back_track(remain, path, idx):
+            if remain == 0:
+                ans.append(path)
+            else:
                 for i in range(idx, len(candidates)):
                     if candidates[i] > remain:
-                        break
-                    if i > idx and candidates[i] == candidates[i-1]:  # unique
+                        break  # early stop, 后面的数字都大于remain
+                    # keep unique
+                    if i > idx and candidates[i] == candidates[i-1]:
                         continue  # 重复数字只看第1个
-                    dfs(remain - candidates[i], path + [candidates[i]], i + 1)
-        dfs(target, [], 0)
-        return res
-# Runtime: 48 ms, faster than 89.62% of Python3 online submissions for Combination Sum II.
-# Memory Usage: 13.9 MB, less than 5.11% of Python3 online submissions for Combination Sum II.
+                    back_track(remain - candidates[i],
+                               path + [candidates[i]], i + 1)
+        back_track(target, [], 0)
+        return ans
+# Runtime: 52 ms, faster than 86.89% of Python3 online submissions for Combination Sum II.
+# Memory Usage: 13.9 MB, less than 6.52% of Python3 online submissions for Combination Sum II.
+
