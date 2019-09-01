@@ -44,6 +44,7 @@ p = "mis*is*p*."
 Output: false
 """
 
+# Top-Down
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
         cache = {}
@@ -54,14 +55,13 @@ class Solution:
                     ans = i == len(s)
                 else:
                     first_match = i < len(s) and p[j] in {s[i], '.'}
-                    if j < len(p) - 1 and p[j + 1] == '*':
+                    if j + 1 < len(p) and p[j + 1] == '*':
                         ans = dp(i, j + 2) or first_match and dp(i + 1, j)
                     else:
                         ans = first_match and dp(i + 1, j + 1)
                 cache[i, j] = ans
             return cache[i, j]
-        
+
         return dp(0, 0)
-     
-# Runtime: 64 ms, faster than 69.23% of Python3 online submissions for Regular Expression Matching.
-# Memory Usage: 13.5 MB, less than 5.32% of Python3 online submissions for Regular Expression Matching.
+# Runtime: 48 ms, faster than 89.09% of Python3 online submissions for Regular Expression Matching.
+# Memory Usage: 14.2 MB, less than 5.55% of Python3 online submissions for Regular Expression Matching.
