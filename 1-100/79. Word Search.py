@@ -77,3 +77,42 @@ class Solution:
         return any(dfs(1, x, y) for x in range(m) for y in range(n) if board[x][y] == word[0])
 # Runtime: 48 ms, faster than 100.00% of Python3 online submissions for Word Search.
 # Memory Usage: 14.3 MB, less than 59.77% of Python3 online submissions for Word Search.
+
+
+# 20190902，思路不变，略有改动
+from collections import Counter
+
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        if not board or not board[0]:
+            return False
+        # 先从字母及其数量判断
+        board_cnt = Counter(x for line in board for x in line)
+        word_cnt = Counter(word)
+        for key in word_cnt:
+            if key not in board_cnt or word_cnt[key] > board_cnt[key]:
+                return False
+        
+        def back_track(idx, x, y):
+            if board[x][y] != word[idx]:
+                return False
+            if idx + 1 == len(word):
+                return True
+            curr = board[x][y]
+            board[x][y] = '*'  # 不能重复使用，占位
+            if x > 0 and back_track(idx + 1, x - 1, y):  # 向上
+                return True
+            if x + 1 < len(board) and back_track(idx + 1, x + 1, y):  # 向下
+                return True
+            if y > 0 and back_track(idx + 1, x, y - 1):  # 向左
+                return True
+            if y + 1 < len(board[0]) and back_track(idx + 1, x, y + 1):  # 向右
+                return True
+            board[x][y] = curr  # 复原
+            return False
+
+        return any(back_track(0, i, j) \
+                   for i in range(len(board)) \
+                   for j in range(len(board[0])))
+# Runtime: 172 ms, faster than 99.33% of Python3 online submissions for Word Search.
+# Memory Usage: 15.3 MB, less than 17.02% of Python3 online submissions for Word Search.
