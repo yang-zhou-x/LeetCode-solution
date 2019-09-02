@@ -22,14 +22,13 @@ class Solution:
             return [[]]
         nums.sort()
         ans = [[], [nums[0]]]
-        last = [[nums[0]]]  # 记录上一步加入ans的集合
+        new = [[nums[0]]]  # 最近加入的一批
         for i in range(1, len(nums)):
             if nums[i] == nums[i - 1]:
-                last = [x + [nums[i]] for x in last]
-                ans += last
+                new = [x + [nums[i]] for x in new]
             else:
-                last = [x + [nums[i]] for x in ans]
-                ans += last
+                new = [x + [nums[i]] for x in ans]
+            ans += new
         return ans
-# Runtime: 40 ms, faster than 91.29% of Python3 online submissions for Subsets II.
+# Runtime: 36 ms, faster than 98.30% of Python3 online submissions for Subsets II.
 # Memory Usage: 13.9 MB, less than 6.38% of Python3 online submissions for Subsets II.
