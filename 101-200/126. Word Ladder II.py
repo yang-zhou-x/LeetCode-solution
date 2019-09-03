@@ -45,7 +45,7 @@ class Solution:
             newlayer = defaultdict(list)
             for w in layer:  # layer[w]里的每个list以w结尾
                 if w == endWord:  # 首次出现endWord时加入res，上一步时endWord被从词表
-                    res.extend(k for k in layer[w])  # 中删去，之后不会再加入res，
+                    res = layer[w]  # 中删去，之后不会再加入res，
                     break  # 从而实现最短路径
                 else:
                     for i in range(len(w)):
