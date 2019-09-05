@@ -37,20 +37,24 @@ class Solution:
 # 简化一下
 class Solution:
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
-        if n > sum(x for x in range(10-k, 10)):
+        # k个数字，能取得的最大值为 10-k,9-k,...,9
+        maxi = sum(x for x in range(10 - k, 10))
+        if n > maxi:
             return []
+        elif n == maxi:
+            return [[x for x in range(10 - k, 10)]]
         ans = []
 
-        def dfs(remain, path, start, t):
-            if remain < 0:
-                return
-            if t == k:
+        def back_track(remain, path, start, idx):
+            if idx == k:
                 if remain == 0:
                     ans.append(path)
-                return
-            for i in range(start, 11 + t - k):
-                dfs(remain - i, path + [i], i + 1, t + 1)
-        dfs(n, [], 1, 0)
+                    return
+            # 满足要求时，第idx位上的数字范围
+            for i in range(start, 11 + idx - k):
+                if remain - i >= 0:
+                    back_track(remain - i, path + [i], i + 1, idx + 1)
+        back_track(n, [], 1, 0)
         return ans
-# Runtime: 32 ms, faster than 95.05% of Python3 online submissions for Combination Sum III.
-# Memory Usage: 13.7 MB, less than 11.11% of Python3 online submissions for Combination Sum III.
+# Runtime: 32 ms, faster than 95.83% of Python3 online submissions for Combination Sum III.
+# Memory Usage: 13.8 MB, less than 11.11% of Python3 online submissions for Combination Sum III.
