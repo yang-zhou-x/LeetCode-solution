@@ -32,10 +32,13 @@ class Solution:
             tmp = factorial(n-1)
             idx, remain = divmod(k, tmp)
             if idx:  # idx >= 1，即k > tmp
-                if remain == 0:  # 刚好是某组数的最后1个，如[1, 4,3,2]
-                    ans.append(candidates[idx - 1])
-                    candidates = candidates[:idx-1] + candidates[idx:]
-                    ans += reversed(candidates)
+                if remain == 0:  
+                    if n > 1: # 刚好是某组数的最后1个，如[1, 4,3,2]
+                        ans.append(candidates[idx - 1])
+                        candidates = candidates[:idx-1] + candidates[idx:]
+                        ans += reversed(candidates)
+                    else:  # candidates只剩1个时
+                        ans += candidates
                     return ''.join(str(x) for x in ans)
                 ans.append(candidates[idx])  # 下1位
                 # 去掉第idx+1大的数字，即加入ans的数字
@@ -45,7 +48,5 @@ class Solution:
                 ans.append(candidates[0])
                 candidates = candidates[1:]
             n -= 1
-        ans += candidates
-        return ''.join(str(x) for x in ans)
-# Runtime: 40 ms, faster than 49.60% of Python3 online submissions for Permutation Sequence.
+# Runtime: 36 ms, faster than 79.38% of Python3 online submissions for Permutation Sequence.
 # Memory Usage: 13.9 MB, less than 8.33% of Python3 online submissions for Permutation Sequence.
