@@ -52,3 +52,21 @@ class Solution:
 # Runtime: 88 ms, faster than 29.86% of Python3 online submissions for Add Two Numbers II.
 # Memory Usage: 13.9 MB, less than 6.25% of Python3 online submissions for Add Two Numbers II.
 
+
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        num1, num2 = 0, 0
+        while l1:
+            num1 =  num1 * 10 + l1.val
+            l1 = l1.next
+        while l2:
+            num2 = num2 * 10 + l2.val
+            l2 = l2.next
+        num1 += num2
+        p = dummy = ListNode(0)
+        for n in str(num1):
+            p.next = ListNode(int(n))
+            p = p.next
+        return dummy.next
+# Runtime: 76 ms, faster than 89.98% of Python3 online submissions for Add Two Numbers II.
+# Memory Usage: 14 MB, less than 6.25% of Python3 online submissions for Add Two Numbers II.
