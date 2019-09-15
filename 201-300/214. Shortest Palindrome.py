@@ -46,3 +46,18 @@ class Solution:
             return s[center * 2 + 1:][::-1] + s
 # Runtime: 300 ms, faster than 30.49% of Python3 online submissions for Shortest Palindrome.
 # Memory Usage: 14.1 MB, less than 14.29% of Python3 online submissions for Shortest Palindrome.
+
+
+class Solution:
+    def shortestPalindrome(self, s: str) -> str:
+        if len(s) < 2:
+            return s
+        left = 0
+        for right in reversed(range(len(s))):
+            if s[left] == s[right]:
+                left += 1
+        if left == len(s):
+            return s
+        return s[left:][::-1] + self.shortestPalindrome(s[:left]) + s[left:]
+# Runtime: 40 ms, faster than 97.03% of Python3 online submissions for Shortest Palindrome.
+# Memory Usage: 14.3 MB, less than 14.29% of Python3 online submissions for Shortest Palindrome.
