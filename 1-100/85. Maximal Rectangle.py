@@ -42,26 +42,26 @@ class Solution:
             return 0
         m = len(matrix)
         n = len(matrix[0])
-        left = [0] * n  # left[i]是i处对应的左起点
-        height = [0] * n  # height[i]是i处对应的高度
+        left = [0] * n  # left[i]是i处对应的左端点
         right = [n] * n  # right[i]是i处对应的右端点
+        height = [0] * n  # height[i]是i处对应的高度
         ans = 0
         for i in range(m):  # 对每一行
             curr_left, curr_right = 0, n
             for j in range(n - 1, -1, -1):  # 从右向左
-                if matrix[i][j] == '1':
-                    right[j] = min(right[j], curr_right)
-                else:
+                if matrix[i][j] == '0':
                     right[j] = n  # 为了不减小下一层的范围
                     curr_right = j  # 右边界（不包含）
-            for j in range(n):
-                if matrix[i][j] == '1':
-                    left[j] = max(left[j], curr_left)
-                    height[j] = height[j] + 1  # 上一层的高度 + 1
                 else:
+                    right[j] = min(right[j], curr_right)
+            for j in range(n):
+                if matrix[i][j] == '0':
                     height[j] = 0
                     left[j] = 0  # 为了不减小下一层的范围
                     curr_left = j + 1  # 左边界（包含）
+                else:
+                    left[j] = max(left[j], curr_left)
+                    height[j] = height[j] + 1  # 上一层的高度 + 1
                 ans = max(ans, height[j] * (right[j] - left[j]))
         return ans
 # Runtime: 220 ms, faster than 71.05% of Python3 online submissions for Maximal Rectangle.
