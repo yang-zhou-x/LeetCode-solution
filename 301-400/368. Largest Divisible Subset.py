@@ -31,5 +31,7 @@ class Solution:
             if len(sub) > len(ans):
                 ans = sub
         return ans
+        # line 29-33:
+        # return max(dp, key=lambda x: len(x))
 # Runtime: 412 ms, faster than 64.27% of Python3 online submissions for Largest Divisible Subset.
 # Memory Usage: 13.9 MB, less than 20.00% of Python3 online submissions for Largest Divisible Subset.
