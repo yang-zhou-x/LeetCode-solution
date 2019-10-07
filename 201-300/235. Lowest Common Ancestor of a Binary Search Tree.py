@@ -21,3 +21,39 @@ All of the nodes' values will be unique.
 p and q are different and both values will exist in the BST.
 '''
 
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        parents = {root:None}
+        stack = [root]
+        while p not in parents or q not in parents:
+            node = stack.pop()
+            if node.left:
+                parents[node.left] = node
+                stack.append(node.left)
+            if node.right:
+                parents[node.right] = node
+                stack.append(node.right)
+        p_parents = {}
+        while p:
+            p_parents[p] = parents[p]
+            p = parents[p]
+        while q not in p_parents:
+            q = parents[q]
+        return q
+# Runtime: 100 ms, faster than 20.27% of Python3 online submissions for Lowest Common Ancestor of a Binary Search Tree.
+# Memory Usage: 18.1 MB, less than 5.55% of Python3 online submissions for Lowest Common Ancestor of a Binary Search Tree.
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        p_val = p.val
+        q_val = q.val
+        node = root
+        while node:
+            if p_val > node.val and q_val > node.val:
+                node = node.right
+            elif p_val < node.val and q_val < node.val:
+                node = node.left
+            else:
+                return node
+# Runtime: 84 ms, faster than 87.57% of Python3 online submissions for Lowest Common Ancestor of a Binary Search Tree.
+# Memory Usage: 17.9 MB, less than 5.55% of Python3 online submissions for Lowest Common Ancestor of a Binary Search Tree.
