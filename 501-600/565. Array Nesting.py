@@ -19,3 +19,19 @@ The elements of A are all distinct.
 Each element of A is an integer within the range [0, N-1].
 '''
 
+class Solution:
+    def arrayNesting(self, nums: List[int]) -> int:
+        ans = cnt = 0
+        visited = [False] * len(nums)
+        for i in range(len(nums)):
+            if not visited[i]:
+                while not visited[i]:
+                    visited[i] = True
+                    i = nums[i]
+                    cnt += 1
+                if cnt > ans:
+                    ans = cnt
+                cnt = 0
+        return ans
+# Runtime: 132 ms, faster than 77.58% of Python3 online submissions for Array Nesting.
+# Memory Usage: 16.2 MB, less than 12.50% of Python3 online submissions for Array Nesting.
