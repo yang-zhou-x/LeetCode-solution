@@ -28,3 +28,14 @@ class Solution:
         return -1
 # Runtime: 112 ms, faster than 74.73% of Python3 online submissions for Repeated String Match.
 # Memory Usage: 12.8 MB, less than 100.00% of Python3 online submissions for Repeated String Match.
+
+# 简化一下代码
+class Solution:
+    def repeatedStringMatch(self, A: str, B: str) -> int:
+        maxi_rep = (len(B) - 1) // len(A) + 3
+        for times in range(1, maxi_rep):
+            if B in A * times:
+                return times
+        return -1
+# Runtime: 116 ms, faster than 72.04% of Python3 online submissions for Repeated String Match.
+# Memory Usage: 12.9 MB, less than 100.00% of Python3 online submissions for Repeated String Match.
